@@ -10,7 +10,7 @@ const Card = (props) => {
     return (
         <article className={classes.card}>
             <div className={classes.img_wrapper}>
-                <img src={"/images/"+data.logo} alt="" className={classes.img}/>
+                <img src={`${process.env.PUBLIC_URL}/images/${data.logo}`} alt="" className={classes.img}/>
             </div>
             <div className={classes.body}>
                 <h3 className={classes.add_margin}>{data.degree ? data.degree:data.company}</h3>
