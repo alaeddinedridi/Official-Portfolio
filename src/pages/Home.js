@@ -17,14 +17,14 @@ const Home = () => {
                     <h2>QA Engineer</h2>
                     <div>Passionate about technology since a very young age. I deeply believe that we should never stop learning and never settle for anything less than being the best at what we do.</div>
                 </section>
+                <section className={classes.projects}>
+                    <h2 id="projects">Projects</h2>
+                    <Grid />
+                </section>
                 <section className={classes.experience}>
                     <h2 id="experience">Experience</h2>
                     {experience.map((item,index) => <Card key={index} item={item} />)} 
                     
-                </section>
-                <section className={classes.projects}>
-                    <h2 id="projects">Projects</h2>
-                    <Grid />
                 </section>
                 <section className={classes.education}>
                     <h2 id="education">Education</h2>
