@@ -10,7 +10,7 @@ const Item = (props) => {
     return (
         <article className={classes.product} onMouseEnter={()=>setShow(true)} onMouseLeave={()=>setShow(false)}>
             <Link to="" style={{ textDecoration: 'none',color:'black' }}>
-            <div><img src={"/images/"+thumbnail} className={classes.img} alt="" /></div>
+            <div><img src={`${process.env.PUBLIC_URL}/images/${thumbnail}`} className={classes.img} alt="" /></div>
             <h3 className={classes.title}>{name}</h3>
             <div className={classes.description}>{description}</div>
             <div className={classes.price}>{price}</div>
