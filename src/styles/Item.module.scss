@@ -1,0 +1,116 @@
+.product{
+    width:100%;
+    padding:.8rem;
+    /* background-color: red; */
+    border:1px solid white;
+}
+
+.product:hover{
+    border:1px solid rgb(236, 236, 236);
+}
+
+.img{
+    width:100%;
+    height:210px;
+    object-fit:fill;
+}
+
+.img:hover,.title:hover{
+    cursor: pointer;
+}
+
+.title{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.description{
+    margin-bottom:1rem;
+}
+
+.price{
+    margin-bottom:1rem;
+    font-weight: bold;
+}
+
+.btn{
+    width:100%;
+    padding:.5rem;
+    background-color:black;
+    color:white;
+    cursor:pointer;
+    border:1px solid black;
+    font-weight: 600;
+    visibility: hidden;
+    text-transform: uppercase;
+    opacity:0;
+}
+
+.btn_show{
+    visibility: visible;
+    opacity:1;
+    transition:opacity .5s linear;
+}
+
+.btn:hover{
+    background-color:white;
+    color:black;
+    transition: all 1s ease-in-out;
+}
+
+.deleteBtn{
+    width:100%;
+    padding:.5rem;
+    background-color:black;
+    color:white;
+    cursor:pointer;
+    border:1px solid black;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+}
+
+.updateBtn{
+    width:100%;
+    padding:.5rem;
+    background-color:white;
+    color:black;
+    cursor:pointer;
+    border:1px solid black;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: .5rem;
+}
+
+
+@media screen and (min-width:1367px) and (max-width:1920px) {
+  
+
+    .title{
+        font-size: 1.4rem;
+    }
+   
+    .description{
+        font-size: 1.35rem;
+    }
+    
+    .price{
+        font-size: 1.45rem;
+    }
+
+
+    .deleteBtn{ 
+        padding:.5em;
+        font-size: 1.3rem;
+        margin-bottom: .5rem;
+    }
+    
+    .updateBtn{
+        padding:.5em;
+        font-size: 1.3rem;
+    }
+
+    .img{
+        height:400px;
+    }
+}

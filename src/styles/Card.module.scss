@@ -1,0 +1,28 @@
+.card{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width:65%;
+    justify-self: center;
+    padding: 1rem;
+    margin-bottom:1rem;
+}
+
+.img_wrapper{
+    width:120px;
+    margin-right:3rem;
+}
+
+.img{
+    width: 100%;
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+.body{
+    .add_margin{
+        margin-bottom:.5rem;
+    }
+}
