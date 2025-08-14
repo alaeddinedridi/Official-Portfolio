@@ -4,6 +4,8 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import {FaTimes} from 'react-icons/fa'
 import logo from '../logo.svg';
 import classes from '../styles/Navbar.module.scss'
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
     const [showLinks, setShowLinks] = useState(false);
@@ -44,6 +46,12 @@ const Navbar = () => {
       };
     }, [size]);
 
+    function scrollToElement(elm,e) {
+      e.preventDefault()
+      const el = document.getElementById(elm);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
     return (
       <nav className={classes.navbar}>
         
@@ -60,7 +68,8 @@ const Navbar = () => {
                 {navbarItems.map((link,index) => {
                   return (
                     <li key={index}>
-                      <a href={"#"+link.id}>{link.title}</a>
+                      <a href="#" onClick={e => scrollToElement(link.id,e) }>{link.title}</a>
+
                     </li>
                   );
                 })}
@@ -75,7 +84,9 @@ const Navbar = () => {
               {navbarItems.map((link,index) => {
                 return (
                   <li key={index}>
-                    <a href={"#"+link.id}>{link.title}</a>
+                    <a href="#" onClick={e => scrollToElement(link.id,e) }>{link.title}</a>
+                    {/* <Link to={"#/"+link.id}>{link.title}</Link> */}
+                    {/* <HashLink smooth to={"#"+link.id}>{link.title}</HashLink> */}
                   </li>
                 );
               })}
