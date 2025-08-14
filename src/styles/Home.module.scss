@@ -15,6 +15,21 @@ section{
     padding:3rem 0;
 }
 
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:2rem;
+}
+
+.info{
+    //ackground-color: yellow;
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 .experience{
     background-color: hsl(210, 36%, 96%);
 }
@@ -47,3 +62,45 @@ main{
 
     }
 }
+
+
+.terminal{
+    background-color: black;
+    color:white;
+    width:45%;
+    height:300px;
+    padding:.5rem 2.5rem .5rem .7rem;
+}
+
+.terminal p{
+    font-family: monospace;
+	font-size: 1.3em;
+}
+
+
+.terminal p:after {
+	content:"_";
+    color:white;
+	opacity: 0;
+	animation: cursor 1s infinite;
+}
+
+@keyframes cursor {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
