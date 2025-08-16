@@ -6,29 +6,54 @@ import {education} from '../data/education'
 import {experience} from '../data/experience'
 import {projects} from '../data/projects'
 import {certificates} from '../data/certificates'
-import Terminal from 'terminal-in-react';
-import { useEffect } from "react"
 
+import { useEffect, useRef, useState  } from "react"
 
 const Home = () => {
 
-    const showMsg = () => 'Hello World'
-
-    var i = 0;
-    var txt = 'Lorem ipsum typing effect!'; /* The text */
-    var speed = 100; /* The speed/duration of the effect in milliseconds */
-
-    const typeWriter=() => {
-        if (i < txt.length) {
-            document.getElementById("typing_text").innerHTML += txt.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
-        }
+    const typingRef = useRef(null);
+    const timeoutsRef = useRef([]);
+    const cancelledRef = useRef(false);
+    
+    const delay = (ms) =>
+      new Promise((res) => {
+        const id = setTimeout(res, ms);
+        timeoutsRef.current.push(id);
+      });
+  
+    async function typeWriter(el, textToType, speed, { append = false, prompt = "aladdin@home:~$ " } = {}) {
+      if (!el) return;
+      if (!append) el.textContent = prompt;
+  
+      for (let i = 0; i < textToType.length; i++) {
+        if (cancelledRef.current) return; // stop if unmounted
+        el.textContent += textToType.charAt(i);
+        await delay(speed);
+      }
     }
-
+  
     useEffect(() => {
-        typeWriter()
-    })
+      
+      cancelledRef.current = false;
+  
+      const run = async () => {
+        const el = typingRef.current;
+        await typeWriter(el, "Show skills", 80);       // first line
+        el.textContent += "\naladdin@home:~$ ";                        // new line
+        await delay(800);                              // pause
+        await typeWriter(el, "done()", 80, { append: true }); // second line, no reset
+      };
+  
+      run();
+  
+      return () => {
+        // cleanup so Strict Mode’s test unmount doesn’t leave timers running
+        cancelledRef.current = true;
+        timeoutsRef.current.forEach(clearTimeout);
+        timeoutsRef.current = [];
+        
+      };
+    }, []);
 
     return (
         <div>
@@ -36,7 +61,9 @@ const Home = () => {
                 <Navbar />
             </header>
             <main>
+    
                 <section className={classes.home}>
+               
                     <div className={classes.info}>
                         <div className={classes.picture}><img src={`${process.env.PUBLIC_URL}/images/cv picture.png`} /></div>
                         <h1 id="home">Aladdin Dridi</h1>
@@ -44,7 +71,7 @@ const Home = () => {
                         <div>Passionate about technology since a very young age. I deeply believe that we should never stop learning and never settle for anything less than being the best at what we do.</div>
                     </div>
                     <div className={classes.terminal}>
-                        <p id="typing_text">aladdin@home:~$ </p>
+                        <p id="typing_text" ref={typingRef} style={{ whiteSpace: "pre-wrap", margin: 0 }}>aladdin@home:~$ </p>
                         <span id="myspan"></span>
                     </div>
                     
